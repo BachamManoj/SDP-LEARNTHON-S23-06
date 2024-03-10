@@ -78,7 +78,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "indiavoting",
         "USER": "postgres",
-        "PASSWORD": "Manoj@3139.",
+        "PASSWORD": "Manoj",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
@@ -133,11 +133,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email details
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '2200030709cseh@gmail.com'
-EMAIL_HOST_PASSWORD = 'ofxw cbhs xfdo tlpt'
+EMAIL_HOST_USER = '2200030709cse@gmail.com'
+EMAIL_HOST_PASSWORD = 'ofxw cbhs rade tlpt'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 # 2Factor SMS API key
-TWO_FACTOR_API_KEY = '01fb95db-a992-11ee-8cbb-0200cd936042'
+TWO_FACTOR_API_KEY = '01fb95db-a992-orfed-8cbb-0200cd936042'
