@@ -1,0 +1,30 @@
+{% extends 'voter/master2.html' %}
+{% block title %}  voting process {% endblock title %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+
+<section>
+    <div class="intro-container">
+      <h1 ><span>How to Vote?</span></h1>
+      <p>Step 1</p>
+
+      <h1 align="center" ><span>How to Vote?</span></h1>
+      <p>Step 1</p>
+      <p> you have to select a candidate from list to vote.</p>
+
+      <p>Step 2</p>
+      <p>After selecting a candidate,you need to upload face data to pass face recognization test </p>
+
+      <p>Step 3</p>
+      <p>If face recognition is successful, then enter the 6 digit (OTP) which is sent to your registered mobile number </p>
+
+      <p>Step 4</p>
+      <p>If the mobile OTP verification is successful, then you have to enter the 6 digit alphanumeric one time password (OTP) which is sent to your registered email address for verification.</p>
+
+      <p>Step 5</p>
+      <p>If the email OTP verification is successful then the vote will be submitted.</p>
+    </div>
+  </section>
+
+{% endblock content %}

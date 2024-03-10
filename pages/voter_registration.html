@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .form-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .left-form {
+            flex-basis: calc(50% - 20px); /* 50% width with some spacing */
+            padding-right: 20px;
+        }
+
+        .right-form {
+            flex-basis: calc(50% - 20px); /* 50% width with some spacing */
+            padding-left: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 98%;
+            background-position-y: center;
+            padding-right: 30px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<script>
+    console.log("{{ error_message }}");
+</script>
+    <div class="container">
+        <div class="header">
+            <h1>Add New Application</h1>
+            <div style="height: 20px;"></div> <!-- Empty space -->
+        </div>
+        <div class="form-wrapper">
+            <div class="left-form">
+                <h2>Basic Information</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="id_picture">Voter Image:</label>
+                    <input type="file" name="picture" id="id_picture" accept="image/*">
+
+                    <label for="id_aadhar_number">Aadhar Card Number:</label>
+                    <input type="text" name="aadhar_number" id="id_aadhar_number">
+
+                    <label for="id_name">Name:</label>
+                    <input type="text" name="name" id="id_name">
+
+                    <label for="id_father_name">Father Name:</label>
+                    <input type="text" name="father_name" id="id_father_name">
+
+                    <label for="id_gender">Gender:</label>
+                    <select name="gender" id="id_gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="id_date_of_birth">Date of Birth:</label>
+                    <input type="date" name="date_of_birth" id="id_date_of_birth">
+
+                    <label for="id_address">Address:</label>
+                    <textarea name="address" id="id_address"></textarea>
+
+                    <label for="id_pincode">Pincode:</label>
+                    <input type="text" name="pincode" id="id_pincode">
+
+                    <label for="id_mobile_number">Mobile Number:</label>
+                    <input type="text" name="mobile_number" id="id_mobile_number">
+
+                    <label for="id_state">State/UT:</label>
+                    <input type="text" name="state" id="id_state">
+
+                    <label for="id_parliamentary_constituency">Parliamentary Constituency:</label>
+                    <input type="text" name="parliamentary_constituency" id="id_parliamentary_constituency">
+
+                    <label for="id_assembly_constituency">Assembly Constituency:</label>
+                    <input type="text" name="assembly_constituency" id="id_assembly_constituency">
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% if messages %}
+    <div class="messages" align="center" >
+        {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {% if message.tags == 'error' %}
+                    <span style="font-size: 100px;">{{ message }}</span>
+                {% else %}
+                    {{ message }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+</body>
+</html>

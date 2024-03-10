@@ -1,0 +1,12 @@
+ {% extends 'voter/master2.html' %}
+ {% block title %}  home {% endblock title %}
+ {% load static %}
+ {% block content %}
+ {% csrf_token %}
+  <section id="intro">
+    <div class="intro-container wow fadeIn">
+      <h1 >WELCOME TO <br><span>ONLINE VOTING</span></h1>
+    </div>
+  </section>
+
+  {% endblock content %}

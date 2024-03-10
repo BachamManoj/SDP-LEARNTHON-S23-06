@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .button.reject {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h1>Application List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>AADHAR CARD</th>
+                <th>Name</th>
+                <th>Father Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>Mobile Number</th>
+                <th>State/UT</th>
+                <th>Parliamentary Constituency</th>
+                <th>Assembly Constituency</th>
+                <th>Voter Image</th>
+                <th>Delete</th> <!-- Added delete column header -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for voter in voters %}
+                <tr>
+                    <td>{{ voter.aadhar_number }}</td>
+                    <td>{{ voter.name }}</td>
+                    <td>{{ voter.father_name }}</td>
+                    <td>{{ voter.gender }}</td>
+                    <td>{{ voter.date_of_birth }}</td>
+                    <td>{{ voter.address }}</td>
+                    <td>{{ voter.pincode }}</td>
+                    <td>{{ voter.mobile_number }}</td>
+                    <td>{{ voter.state }}</td>
+                    <td>{{ voter.parliamentary_constituency }}</td>
+                    <td>{{ voter.assembly_constituency }}</td>
+                    <td>
+                        {% if voter.picture %}
+                            <img src="{{ voter.picture.url }}" alt="Voter Image">
+                        {% else %}
+                            No image available
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button class="button reject" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>
